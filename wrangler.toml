@@ -1,0 +1,18 @@
+# Cloudflare Workers 配置（Wrangler）
+# 部署前先创建 D1 数据库，再把返回的 database_id 填到下面。
+#   wrangler d1 create chatroom
+# 部署命令：wrangler deploy
+# 公开地址：https://chatroom.<你的账号子域名>.workers.dev
+
+name = "chatroom"
+main = "worker.js"
+compatibility_date = "2026-11-15"
+
+# workers.dev 公开域名（默认开启）。不要关掉它，否则没有公开链接。
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "chatroom"
+# TODO：填入 `wrangler d1 create chatroom` 返回的 database_id
+database_id = "00000000-0000-0000-0000-000000000000"
